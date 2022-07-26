@@ -1,0 +1,6 @@
+# append new changeset at the end
+databaseChangeLog:
+  - include:
+      file: db/changelog/20220723000000_create_user.yaml
+  - include:
+      file: db/changelog/20220723000000_create_inquiry.yaml

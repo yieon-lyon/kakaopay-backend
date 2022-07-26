@@ -1,0 +1,210 @@
+= Kakaopay backend assignment 0723
+
+parrotbill@naver.com
+
+ifndef::snippets[]
+:snippets: ../../../build/generated-snippets
+endif::[]
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:site-url: /build/asciidoc/html5/
+
+=== 응답코드
+
+.응답 코드, 메세지 유형
+|===
+|code | description
+
+|0
+|정상 처리
+
+|1001
+|로그인/비밀번호 변경 등 이메일 혹은 비밀번호가 올바르지 않은 경우
+
+|1002
+|회원 가입 시 설정된 비밀번호가 6자리 이하인 경우
+
+|1003
+|회원 가입 시 이미 가입된 이메일로 가입하려는 경우
+
+|1004
+|문의 담당자가 지정되지 않거나 존재하지 않는 경우
+
+|1005
+|문의 담당자가 이미 지정된 문의건 인 경우
+
+|1006
+|서비스 접근 권한이 존재하지 않는 경우
+
+|===
+
+=== 회원가입
+
+====
+**POST** /auth/signup
+====
+
+==== Request
+
+- Request Body
+include::{snippets}/signup/request-fields.adoc[]
+
+- Request HTTP Example
+include::{snippets}/signup/http-request.adoc[]
+
+==== Response
+
+- Response HTTP Example
+include::{snippets}/signup/http-response.adoc[]
+
+- 이미 있는 이메일로 회원가입
+include::{snippets}/signup-with-existing-email/http-response.adoc[]
+
+=== 로그인
+
+====
+**POST** /auth/signin
+====
+
+==== Request
+
+- Request Body
+include::{snippets}/signin/request-fields.adoc[]
+
+- Request HTTP Example
+include::{snippets}/signin/http-request.adoc[]
+
+==== Response
+
+- Response fields
+include::{snippets}/signin/response-fields.adoc[]
+
+- Response HTTP Example
+include::{snippets}/signin/http-response.adoc[]
+
+- 잘못된 이메일/비밀번호로 로그인
+include::{snippets}/signin-with-invalid-account/http-response.adoc[]
+
+=== 고객 문의 목록 조회
+
+====
+**POST** /inquiry/list
+====
+
+==== Request
+
+- Request Body
+include::{snippets}/get-inquiries/request-fields.adoc[]
+
+- Request HTTP Example
+include::{snippets}/get-inquiries/http-request.adoc[]
+
+==== Response
+
+- Response HTTP Example
+include::{snippets}/get-inquiries/http-response.adoc[]
+
+=== 고객 문의 상세 조회
+
+====
+**POST** /inquiry/list/details
+====
+
+==== Request
+
+- Request Body
+include::{snippets}/get-inquiry-details/request-fields.adoc[]
+
+- Request HTTP Example
+include::{snippets}/get-inquiry-details/http-request.adoc[]
+
+==== Response
+
+- Response HTTP Example
+include::{snippets}/get-inquiry-details/http-response.adoc[]
+
+=== 고객 문의 생성
+
+====
+**POST** /inquiry
+====
+
+==== Request
+
+- Request Body
+include::{snippets}/create-inquiry/request-fields.adoc[]
+
+- Request HTTP Example
+include::{snippets}/create-inquiry/http-request.adoc[]
+
+==== Response
+
+- Response fields
+include::{snippets}/create-inquiry/response-fields.adoc[]
+
+- Response HTTP Example
+include::{snippets}/create-inquiry/http-response.adoc[]
+
+=== 고객 추가 문의 및 답변 생성
+
+====
+**POST** /inquiry/details
+====
+
+==== Request
+
+- Request Body
+include::{snippets}/create-inquiry-details/request-fields.adoc[]
+
+- Request HTTP Example
+include::{snippets}/create-inquiry-details/http-request.adoc[]
+
+==== Response
+
+- Response fields
+include::{snippets}/create-inquiry-details/response-fields.adoc[]
+
+- Response HTTP Example
+include::{snippets}/create-inquiry-details/http-response.adoc[]
+
+=== 고객 문의 담당자 변경
+
+====
+**PUT** /inquiry/assigner/{inquiryId}
+====
+
+==== Request
+
+- Request Body
+include::{snippets}/update-inquiry-assigned/path-parameters.adoc[]
+
+- Request HTTP Example
+include::{snippets}/update-inquiry-assigned/http-request.adoc[]
+
+==== Response
+
+- Response HTTP Example
+include::{snippets}/update-inquiry-assigned/http-response.adoc[]
+
+=== 고객 문의 상태 변경
+
+====
+**PUT** /inquiry/status/{inquiryId}/{status}
+====
+
+==== Request
+
+- Request Body
+include::{snippets}/update-inquiry-status/path-parameters.adoc[]
+
+- Request HTTP Example
+include::{snippets}/update-inquiry-status/http-request.adoc[]
+
+==== Response
+
+- Response HTTP Example
+include::{snippets}/update-inquiry-status/http-response.adoc[]

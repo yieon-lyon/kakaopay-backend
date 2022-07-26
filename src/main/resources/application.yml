@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:testdb
+      driverClassName: org.h2.Driver
+      username: sa
+      password: sa1!
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+
+jwt:
+  key: 'c3ByaW5nLWJvb3Qtc2VjdXJpdHktand0LXR1dG9yaWFsLWppd29vbi1zcHJpbmctYm9vdC1zZWN1cml0eS1qd3QtdHV0b3JpYWwK'
+server:
+  port: 8080
+
+logging:
+  level:
+    root:
+      info

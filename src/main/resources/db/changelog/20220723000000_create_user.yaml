@@ -1,0 +1,77 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-user
+      author: parrotbill@naver.com
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+              - column:
+                  name: login
+                  type: VARCHAR(50)
+              - column:
+                  name: password
+                  type: VARCHAR(60)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: email
+                  type: VARCHAR(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: activated
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  constraints:
+                    nullable: false
+                  name: updated_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: last_sign_at
+                  type: DATETIME
+                  defaultValueComputed: CURRENT_TIMESTAMP
+
+  - changeSet:
+      id: create-table-authority
+      author: parrotbill@naver.com
+      changes:
+        - createTable:
+            tableName: authority
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                  name: name
+                  type: VARCHAR(50)
+
+  - changeSet:
+      id: user-table-add-unique-constraint
+      author: parrotbill@naver.com
+      changes:
+        - addUniqueConstraint:
+            columnNames: email
+            constraintName: unique-email-constraint
+            tableName: user
+        - addUniqueConstraint:
+            columnNames: login
+            constraintName: unique-login-constraint
+            tableName: user
